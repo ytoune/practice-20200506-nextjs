@@ -1,6 +1,6 @@
 next js, preact, redux, material-ui を組み合わせる練習
 
-誕生日別に二次元（2.5 含む）キャラクターを表示する
+誕生日別に二次元（2.5 含む）キャラクターを表示するSPA
 
 [完成品](https://ytoune.github.io/practice-20200506-nextjs/)
 
