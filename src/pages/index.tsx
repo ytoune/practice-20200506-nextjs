@@ -1,29 +1,15 @@
 import React from 'react'
 import Button from '@material-ui/core/Button'
-
-import CircularProgress from '@material-ui/core/CircularProgress'
 import Alert from '@material-ui/lab/Alert'
 import { useData, useCharacters, useMonth, actions, useAction } from '~/store'
 import CharacterList from '~/components/CharacterList'
+import Loading from '~/components/Loading'
 
 const Home = () => {
 	useData()
 	const setMonth = useAction(actions.setMonth)
 	const list = useCharacters()
 	const month = useMonth()
-	if (!list.length) {
-		return (
-			<div>
-				<CircularProgress />
-				<style jsx>{`
-					div {
-						padding: 20px;
-						text-align: center;
-					}
-				`}</style>
-			</div>
-		)
-	}
 	return (
 		<div>
 			<div>
@@ -40,8 +26,10 @@ const Home = () => {
 			</div>
 			{!month ? (
 				<Alert severity="info">select month</Alert>
-			) : (
+			) : list.length ? (
 				<CharacterList characters={list} />
+			) : (
+				<Loading />
 			)}
 			<style jsx>{`
 				.listitem {
