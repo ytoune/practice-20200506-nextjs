@@ -22,9 +22,12 @@ const order = (q: Character, w: Character) =>
 	q.name.localeCompare(w.name, [], { numeric: true }) ||
 	q.product.localeCompare(w.product, [], { numeric: true })
 
+let gotflag = false
 const getdata = () =>
 	new Observable<Data>(s => {
 		import('../data.json').then((d: Data) => {
+			if (gotflag) return
+			gotflag = true
 			s.next(d)
 		})
 	}).pipe(map(d => patch(d)))

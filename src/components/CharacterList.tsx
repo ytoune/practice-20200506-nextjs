@@ -15,7 +15,7 @@ const createUrl = (name: string) => {
 const CharacterList = ({ characters }: { characters: Character[] }) => (
 	<List>
 		{characters.map(c => (
-			<ListItem className="listitem" button key={c.name + '/' + c.product}>
+			<ListItem button key={c.name + '/' + c.product}>
 				<ListItemAvatar>
 					<>{c.birthday}</>
 				</ListItemAvatar>
